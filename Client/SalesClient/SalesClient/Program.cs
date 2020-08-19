@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -12,13 +13,13 @@ namespace SalesClient
     {
         private const string filePath = @"Files/SalesData.txt";
         private const string host = "http://localhost:6523";
-        private const string usernamePassword= "test:test";
+        private const string usernamePassword = "test:test";
         static async Task Main(string[] args)
         {
-            await UploadFile(filePath);
+            await UploadFile(args[0], args[1]);
         }
 
-        public static async Task UploadFile(string filePath)
+        public static async Task UploadFile(string filePath, string minimumSalesAmount)
         {
             if (string.IsNullOrWhiteSpace(filePath))
             {
@@ -37,6 +38,7 @@ namespace SalesClient
             var byteArray = Encoding.ASCII.GetBytes(usernamePassword);
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
             formDataContent.Add(fileContent, "formFile", Path.GetFileName(filePath));
+            formDataContent.Add(new StringContent(minimumSalesAmount), "minimumSalesAmount");
 
             var response = await httpClient.PostAsync($"{host}/api/files", formDataContent);
             response.EnsureSuccessStatusCode();

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SalesClient": {
+      "commandName": "Project",
+      "commandLineArgs": "\"Files/SalesData.txt\" \"120.11\""
+    }
+  }
+}

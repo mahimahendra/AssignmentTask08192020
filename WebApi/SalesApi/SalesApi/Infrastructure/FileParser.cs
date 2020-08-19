@@ -21,8 +21,13 @@ namespace SalesApi.Infrastructure
             csv.Configuration.HasHeaderRecord = false;
             csv.Configuration.RegisterClassMap<CustomerSalesMap>();
 
-            return await csv.GetRecordsAsync<CustomerSalesRecord>().ToListAsync();
+            var list = new List<CustomerSalesRecord>();
+            await foreach (var customer in csv.GetRecordsAsync<CustomerSalesRecord>())
+            {
+                list.Add(customer);
+            };
 
+            return list;
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿using SalesApi.Domain.Entities;
+﻿using SalesApi.Application;
+using SalesApi.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SalesApi.Application
+namespace SalesApi.Infrastructure
 {
     public class UserService : IUserService
     {
