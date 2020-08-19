@@ -20,3 +20,12 @@ Console App - Client/SalesClient
 Run Web API solution
 
 Run Console App
+
+#### Authentication (Basic Authentication)
+
+User Name: test
+Password: test
+
+
+
+
