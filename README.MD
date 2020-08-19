@@ -10,7 +10,10 @@ Microsoft Visual Studio 2019 V16.6.3 and above
 
 Web API - WebApi/SalesApi
 
+Unit Test - WebApi/SalesApi/SalesApi.UnitTest
+
 Console App - Client/SalesClient
+
 
 #### How to Run
 
